@@ -1,87 +1,87 @@
--- Seeding
-PRAGMA foreign_keys = ON;
+USE final_proj;
 
--- Artists
-INSERT OR IGNORE INTO artists (spotify_artist_id, name, genre) VALUES
-    ('seed_artist_al_james', 'Al James', 'Pinoy Hip-Hop'),
-    ('seed_artist_hev_abi', 'Hev Abi', 'Pinoy Hip-Hop'),
-    ('seed_artist_parokya_ni_edgar', 'Parokya ni Edgar', 'OPM Rock'),
-    ('seed_artist_shanti_dope', 'Shanti Dope', 'Pinoy Hip-Hop'),
-    ('seed_artist_sassa_gurl', 'Sassa Gurl', 'Pop');
+INSERT IGNORE INTO artists (id, name, genre) VALUES
+    (1, 'Parokya ni Edgar', 'OPM Rock'),
+    (2, 'Hev Abi', 'Pinoy Hip-Hop'),
+    (3, 'Kendrick Lamar', 'Hip-Hop'),
+    (4, 'Bad Bunny', 'Reggaeton'),
+    (5, 'Olivia Rodrigo', 'Pop Rock'),
+    (6, 'Olivia Dean', 'R&B/Soul'),
+    (7, 'Al James', 'Pinoy Hip-Hop'),
+    (8, 'fitterkarma', 'Indie');
 
--- Albums 
-INSERT OR IGNORE INTO albums (spotify_album_id, title, year_released, album_cover_url, spotify_url, genre) VALUES
-    ('seed_album_para_sa_streets', 'Para Sa Streets', 2023, '', 'https://open.spotify.com/album/62G53UzsyGd1updwIfyXLq', 'Pinoy Hip-Hop'),
-    ('seed_album_the_ordertaker', 'The Ordertaker', 2014, '', 'https://open.spotify.com/track/3AAszpH4cjFE6okQAYUrtO', 'OPM Rock'),
-    ('seed_album_materyal', 'Materyal', 2017, '', 'https://open.spotify.com/album/5PPETYQBNZUJgUzHAVx6gx', 'Pinoy Hip-Hop');
+INSERT IGNORE INTO albums (id, title, year_released, album_cover_url, genre) VALUES
+    (1, 'Khangkhungkherrnitz', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02556f267a3547979e820c4144', 'OPM Rock'),
+    (2, 'Gulong Itlog Gulong', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0287b7413135165919334c4577', 'OPM Rock'),
+    (3, 'Halina Sa Parokya', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024d92c86cccc6a8f604defbd6', 'OPM Rock'),
+    (4, 'Kung Alam Mo Lang', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027300c1e7edcdbd15a42e1579', 'Pinoy Hip-Hop'),
+    (5, 'DAMN.', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b52c6b9bc4e43d873869699', 'Hip-Hop'),
+    (6, 'To Pimp A Butterfly', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cdb645498cd3d8a2db4d05e1', 'Hip-Hop'),
+    (7, 'Un Verano Sin Ti', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0249d694203245f241a1bcaa72', 'Reggaeton'),
+    (8, 'SOUR', NULL, 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a91c10fe9472d9bd89802e5a', 'Pop Rock'),
+    (9, 'Messy', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cac9b52107643faf13a7587b', 'R&B/Soul'),
+    (10, 'Pa-Umaga', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0207e1909db1c5b06b78cb6dc3', 'Pinoy Hip-Hop'),
+    (11, 'Pahinga', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c57713156d3bc9ce81c6f819', 'Pinoy Hip-Hop'),
+    (12, 'Kalapastangan', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028c1a5cb63a8f4f9c16a127c3', 'Indie'),
+    (13, 'Pag-Ibig ay Kanibalismo II', NULL, 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02796442914fd83d47da3242a9', 'Indie'),
+    (14, 'Man I Need', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e3d69e17dde129037a1f09e2', 'R&B/Soul');
 
--- Album artists
-INSERT OR IGNORE INTO album_artists (album_id, artist_id)
-SELECT albums.id, artists.id
-FROM albums, artists
-WHERE albums.spotify_album_id = 'seed_album_para_sa_streets'
-  AND artists.spotify_artist_id = 'seed_artist_hev_abi';
+INSERT IGNORE INTO album_artists (album_id, artist_id) VALUES
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 3),
+    (6, 3),
+    (7, 4),
+    (8, 5),
+    (9, 6),
+    (10, 7),
+    (11, 7),
+    (12, 8),
+    (13, 8),
+    (14, 6);
 
-INSERT OR IGNORE INTO album_artists (album_id, artist_id)
-SELECT albums.id, artists.id
-FROM albums, artists
-WHERE albums.spotify_album_id = 'seed_album_the_ordertaker'
-  AND artists.spotify_artist_id = 'seed_artist_parokya_ni_edgar';
+INSERT IGNORE INTO songs (id, album_id, title, genre) VALUES
+    (1, 1, 'Buloy', 'OPM Rock'),
+    (2, 2, 'Halaga', 'OPM Rock'),
+    (3, 3, 'The Ordertaker', 'OPM Rock'),
+    (4, 4, 'Walang Alam', 'Pinoy Hip-Hop'),
+    (5, 4, 'Alam Mo Ba Girl', 'Pinoy Hip-Hop'),
+    (6, 4, 'Sumugal', 'Pinoy Hip-Hop'),
+    (7, 5, 'HUMBLE.', 'Hip-Hop'),
+    (8, 5, 'DNA.', 'Hip-Hop'),
+    (9, 6, 'Alright', 'Hip-Hop'),
+    (10, 7, 'Tití Me Preguntó', 'Reggaeton'),
+    (11, 7, 'Moscow Mule', 'Reggaeton'),
+    (12, 7, 'Después de la Playa', 'Reggaeton'),
+    (13, 8, 'drivers license', 'Pop Rock'),
+    (14, 8, 'good 4 u', 'Pop Rock'),
+    (15, 9, 'Dive', 'R&B/Soul'),
+    (16, 10, 'Pa-Umaga', 'Pinoy Hip-Hop'),
+    (17, 11, 'Pahinga', 'Pinoy Hip-Hop'),
+    (18, 12, 'Kalapastangan', 'Indie'),
+    (19, 13, 'Pag-Ibig ay Kanibalismo II', 'Indie'),
+    (20, 14, 'Man I Need', 'R&B/Soul');
 
-INSERT OR IGNORE INTO album_artists (album_id, artist_id)
-SELECT albums.id, artists.id
-FROM albums, artists
-WHERE albums.spotify_album_id = 'seed_album_materyal'
-  AND artists.spotify_artist_id = 'seed_artist_shanti_dope';
-
--- Songs that belong to album 
-INSERT OR IGNORE INTO songs (spotify_track_id, album_id, title, spotify_url, genre)
-SELECT 'seed_track_para_sa_streets', albums.id, 'Para Sa Streets', 'https://open.spotify.com/track/0szRYVD2MwFzQMs58PT1Ec', 'Pinoy Hip-Hop'
-FROM albums
-WHERE albums.spotify_album_id = 'seed_album_para_sa_streets';
-
-INSERT OR IGNORE INTO songs (spotify_track_id, album_id, title, spotify_url, genre)
-SELECT 'seed_track_the_ordertaker', albums.id, 'The Ordertaker', 'https://open.spotify.com/track/3AAszpH4cjFE6okQAYUrtO', 'OPM Rock'
-FROM albums
-WHERE albums.spotify_album_id = 'seed_album_the_ordertaker';
-
-INSERT OR IGNORE INTO songs (spotify_track_id, album_id, title, spotify_url, genre)
-SELECT 'seed_track_nadarang', albums.id, 'Nadarang', 'https://open.spotify.com/track/0GV5o55wGdk8rt0q8cVGVZ', 'Pinoy Hip-Hop'
-FROM albums
-WHERE albums.spotify_album_id = 'seed_album_materyal';
-
--- Standalone singles with no album_id
-INSERT OR IGNORE INTO songs (spotify_track_id, album_id, title, spotify_url, genre) VALUES
-    ('seed_track_pa_umaga', NULL, 'Pa-Umaga', 'https://open.spotify.com/track/3U8MbjNAP56IrzpbEFn1qN', 'Pinoy Hip-Hop'),
-    ('seed_track_maria_hiwaga', NULL, 'Maria Hiwaga', 'https://open.spotify.com/track/7rRpt0FcGdDxyhiFcSlswH', 'Pop');
-
--- Song artists
-INSERT OR IGNORE INTO song_artists (song_id, artist_id)
-SELECT songs.id, artists.id
-FROM songs, artists
-WHERE songs.spotify_track_id = 'seed_track_pa_umaga'
-  AND artists.spotify_artist_id = 'seed_artist_al_james';
-
-INSERT OR IGNORE INTO song_artists (song_id, artist_id)
-SELECT songs.id, artists.id
-FROM songs, artists
-WHERE songs.spotify_track_id = 'seed_track_para_sa_streets'
-  AND artists.spotify_artist_id = 'seed_artist_hev_abi';
-
-INSERT OR IGNORE INTO song_artists (song_id, artist_id)
-SELECT songs.id, artists.id
-FROM songs, artists
-WHERE songs.spotify_track_id = 'seed_track_the_ordertaker'
-  AND artists.spotify_artist_id = 'seed_artist_parokya_ni_edgar';
-
-INSERT OR IGNORE INTO song_artists (song_id, artist_id)
-SELECT songs.id, artists.id
-FROM songs, artists
-WHERE songs.spotify_track_id = 'seed_track_nadarang'
-  AND artists.spotify_artist_id = 'seed_artist_shanti_dope';
-
-INSERT OR IGNORE INTO song_artists (song_id, artist_id)
-SELECT songs.id, artists.id
-FROM songs, artists
-WHERE songs.spotify_track_id = 'seed_track_maria_hiwaga'
-  AND artists.spotify_artist_id = 'seed_artist_sassa_gurl';
+INSERT IGNORE INTO song_artists (song_id, artist_id) VALUES
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 2),
+    (6, 2),
+    (7, 3),
+    (8, 3),
+    (9, 3),
+    (10, 4),
+    (11, 4),
+    (12, 4),
+    (13, 5),
+    (14, 5),
+    (15, 6),
+    (16, 7),
+    (17, 7),
+    (18, 8),
+    (19, 8),
+    (20, 6);
