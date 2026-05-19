@@ -76,7 +76,7 @@ class Profile {
             JOIN artists ON artists.id = song_artists.artist_id
 
             WHERE song_reviews.user_id = ?
-            ORDER BY song_reviews.rating DESC, song_reviews.created_at DESC  --if same then by created
+            ORDER BY song_reviews.rating DESC, song_reviews.created_at DESC  -- if same then by created
             
             LIMIT 2
 
