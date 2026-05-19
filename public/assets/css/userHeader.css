@@ -56,8 +56,9 @@ body {
     flex: 0 0 220px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
+    justify-content: center;
+    gap: 22px;
+    border-color: #530606;
 }
 
 .username {
