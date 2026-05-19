@@ -35,6 +35,10 @@ switch ($path) {
         require BASE_PATH . '/app/views/landing.php';
         break;
 
+    case '/profile':
+        require BASE_PATH . '/app/views/profile/profile.php';
+        break;
+
     case '/login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $authController->login();
