@@ -19,7 +19,7 @@ $path = '/' . trim($path, '/');
 
 switch ($path) {
     case '/':
-    case '/index.php':
+    case '/index':
         require BASE_PATH . '/app/views/landing.php';
         break;
 
