@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../../includes/auth.php';
 
 if (isLoggedIn()) {
-    header('Location: /');
+    header('Location: ./');
     exit;
 }
 
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($password, $user->password)) {
             loginUser($user);
 
-            header('Location: /');
+            header('Location: ./');
             exit;
         }
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="../assets/css/login_style.css">
+    <link rel="stylesheet" href="assets/css/login_style.css">
 </head>
 <body class="login-page">
     <main class="login-shell">
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <button type="submit">Sign In</button>
 
-                    <a href="register.php" class="register-link">Register Account</a>
+                    <a href="register" class="register-link">Register Account</a>
                 </form>
             </div>
         </section>
