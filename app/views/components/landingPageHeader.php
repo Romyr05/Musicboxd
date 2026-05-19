@@ -6,12 +6,12 @@
     <a href="/" class="brand">Musicboxd</a>
 
     <nav class="header-nav">
-        <a href="/profile" class="nav-button">
+        <a href="profile" class="nav-button">
             <i class="bi bi-search" aria-hidden="true"></i>
             <span>  My Profile</span>
         </a>
 
-        <a href="/journal" class="nav-button">
+        <a href="journal" class="nav-button">
             <i class="bi bi-search" aria-hidden="true"></i>
             <span> My Journal</span>
         </a>
