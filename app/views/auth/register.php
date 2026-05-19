@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../../includes/auth.php';
 
 if (isLoggedIn()) {
-    header('Location: /');
+    header('Location: ./');
     exit;
 }
 
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $stmt->execute([$username, $email, $hashedPassword]);
 
-            header('Location: login.php');
+            header('Location: login');
             exit;
         }
     }
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
-    <link rel="stylesheet" href="../assets/css/register_style.css">
+    <link rel="stylesheet" href="assets/css/register_style.css">
 </head>
 <body class="register-page">
     <main class="register-shell">
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <button type="submit">Create Account</button>
 
-                    <a href="login.php" class="login-link">Already have an account?</a>
+                    <a href="login" class="login-link">Already have an account?</a>
                 </form>
             </div>
         </section>
