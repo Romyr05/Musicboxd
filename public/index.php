@@ -1,22 +1,28 @@
 <?php
 
-#base path (Musicboxd)
-define('BASE_PATH', dirname(__DIR__));
+define('BASE_PATH', dirname(__DIR__));   #base path for all
 
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);  // get only the url path 
-$scriptDir =  dirname($_SERVER['SCRIPT_NAME']);    
+
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);  #url
+$scriptDir = dirname($_SERVER['SCRIPT_NAME']);
 
 
 /*
 check if pages is not in root folder, if not get the file path only without its parent
 
 */
-if ($scriptDir !== '/' && str_starts_with($path, $scriptDir)) {
-    $path = substr($path, strlen($scriptDir));  
-}
+if ($scriptDir !== '/' && str_starts_with($path, $scriptDir)) { 
+    $path = substr($path, strlen($scriptDir));   
+} 
 
-$path = '/' . trim($path, '/');  
+$path = '/' . trim($path, '/');
 
+
+require BASE_PATH . '/app/controllers/AuthController.php';
+
+$authController = new AuthController();
+
+#routes
 switch ($path) {
     case '/':
     case '/index':
@@ -24,11 +30,19 @@ switch ($path) {
         break;
 
     case '/login':
-        require BASE_PATH . '/app/views/auth/login.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $authController->login();
+        } else {
+            $authController->showLogin();
+        }
         break;
 
     case '/register':
-        require BASE_PATH . '/app/views/auth/register.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $authController->register();
+        } else {
+            $authController->showRegister();
+        }
         break;
 
     default:

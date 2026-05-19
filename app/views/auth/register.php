@@ -1,46 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../includes/auth.php';
-
-if (isLoggedIn()) {
-    header('Location: ./');
-    exit;
-}
-
-
-$error = '';
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    $confirmPassword = $_POST['confirm_password'] ?? '';
-
-
-    if ($username === '' || $email === '' || $password === '' || $confirmPassword === '') {
-        $error = 'Fields are missing';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = 'Enter valid email';
-    } elseif ($password !== $confirmPassword) {
-        $error = 'Passwords do not match.';
-    } else {
-        if (userExist($username, $email)) {
-            $error = 'Username or email already exist';
-        } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-            $stmt = db()->prepare(
-                'INSERT INTO users(username, email, password) VALUES (?, ?, ?)'
-            );
-
-            $stmt->execute([$username, $email, $hashedPassword]);
-
-            header('Location: login');
-            exit;
-        }
-    }
-}
+#html all
 ?>
 <!DOCTYPE html>
 <html lang="en">

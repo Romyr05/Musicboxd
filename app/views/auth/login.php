@@ -1,39 +1,6 @@
 <?php
+// For HTML purposes only
 
-require_once __DIR__ . '/../../includes/auth.php';
-
-if (isLoggedIn()) {
-    header('Location: ./');
-    exit;
-}
-
-$error = '';
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
-
-    if ($username === '' || $password === '') {
-        $error = 'Please enter your username/email and password.';
-    } else {
-        $stmt = db()->prepare(
-            'SELECT * FROM users WHERE username = ? OR email = ? LIMIT 1'
-        );
-
-        $stmt->execute([$username, $username]);
-        $user = $stmt->fetch();
-
-        if ($user && password_verify($password, $user->password)) {
-            loginUser($user);
-
-            header('Location: ./');
-            exit;
-        }
-
-        $error = 'Invalid login credentials.';
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
