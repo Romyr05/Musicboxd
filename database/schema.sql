@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS album_reviews (
     favorited TINYINT(1) NOT NULL DEFAULT 0,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    likes INT NOT NULL DEFAULT 0,
     
     CONSTRAINT chk_album_reviews_rating CHECK (rating BETWEEN 1 AND 5),
     CONSTRAINT chk_album_reviews_favorited CHECK (favorited IN (0, 1)),
