@@ -17,10 +17,12 @@ if ($scriptDir !== '/' && str_starts_with($path, $scriptDir)) {
 
 $path = '/' . trim($path, '/');
 
-
+//Controllers
 require BASE_PATH . '/app/controllers/AuthController.php';
+require BASE_PATH . '/app/controllers/ProfileController.php';
 
 $authController = new AuthController();
+$profileController = new ProfileController();
 
 #routes
 switch ($path) {
@@ -36,7 +38,9 @@ switch ($path) {
         break;
 
     case '/profile':
-        require BASE_PATH . '/app/views/profile/profile.php';
+
+        $profileController->show();
+        
         break;
 
     case '/login':
