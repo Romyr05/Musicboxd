@@ -1,5 +1,5 @@
 <?php
-
+# helper file only
 
 
 //using php session
@@ -16,16 +16,6 @@ function isLoggedIn(): bool{
     return isset($_SESSION['user_id']);
 }
 
-function userExist(string $username, $email): bool{
-    $stmt = db()->prepare(
-        'SELECT id FROM users WHERE username = ? OR email = ? LIMIT 1'
-    );
-
-    $stmt->execute([$username, $email]);
-
-    return (bool) $stmt->fetch();  //fetch returns obj must be bool
-}
-
  
 function loginUser(object $user): void
 {
@@ -39,7 +29,7 @@ function loginUser(object $user): void
 function requireLogin(): void
 {
     if (!isLoggedIn()) {
-        header('Location: pages/login.php');
+        header('Location: login');
         exit;
     }
 }
