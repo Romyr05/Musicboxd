@@ -1,0 +1,10 @@
+
+RewriteEngine On
+
+# Do not rewrite requests for real directories and files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+# send all other request to index.php
+RewriteRule ^ index.php [QSA,L]
