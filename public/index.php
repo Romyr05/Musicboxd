@@ -26,6 +26,12 @@ $authController = new AuthController();
 switch ($path) {
     case '/':
     case '/index':
+        if(!isLoggedIn()){
+            header('Location: login');
+            exit;
+        }
+
+
         require BASE_PATH . '/app/views/landing.php';
         break;
 
@@ -43,6 +49,11 @@ switch ($path) {
         } else {
             $authController->showRegister();
         }
+        break;
+
+
+    case '/logout';
+        $authController->logout();
         break;
 
     default:
