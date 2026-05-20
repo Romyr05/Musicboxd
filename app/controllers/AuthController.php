@@ -1,7 +1,7 @@
 <?php
 
-require_once BASE_PATH . '/app/includes/auth.php';
-require_once BASE_PATH . '/app/models/User.php';
+require_once BASE_PATH . '/app/includes/auth.php'; //helper
+require_once BASE_PATH . '/app/models/User.php';  //model
 
 class AuthController
 {
@@ -41,6 +41,7 @@ class AuthController
             return;
         }
 
+        //checks if user email exists
         $user = $this->userModel->findByUsernameOrEmail($username);
 
         if ($user && password_verify($password, $user->password)) {
@@ -96,4 +97,14 @@ class AuthController
 
         require BASE_PATH . '/app/views/auth/register.php';
     }
+
+    public function logout(): void{
+
+        logoutUser();
+
+        header('Location: login');
+        exit;
+
+    }
+
 }

@@ -25,6 +25,11 @@ function loginUser(object $user): void
     $_SESSION['username'] = $user->username;
 }
 
+function currentUsername(): ?string
+{
+    return $_SESSION['username'] ?? null;
+}
+
 
 function requireLogin(): void
 {

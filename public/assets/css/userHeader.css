@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.site-header {
+    height: 58px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    background: #f4f4f4;
+    border-bottom: 2px solid gray;
+}
+
+.brand {
+    flex: 0 0 120px;
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+}
+
+.header-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+}
+
+.nav-button {
+    width: 220px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 5px;
+    background: #252525;
+    color: white;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background: #111;
+}
+
+.user-actions {
+    flex: 0 0 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    border-color: #530606;
+}
+
+.username {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #777;
+    white-space: nowrap;
+}
+
+.logout-link {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+.logout-link:hover {
+    color: #000;
+    text-decoration: underline;
+}

@@ -1,24 +1,21 @@
+<!-- use the userHeader css for this -->
 
 <header class="site-header">
+
+
     <a href="/" class="brand">Musicboxd</a>
 
     <nav class="header-nav">
-        <a href="/users" class="nav-button">
+        <a href="profile" class="nav-button">
             <i class="bi bi-search" aria-hidden="true"></i>
-            <span>Browse Users</span>
+            <span>  My Profile</span>
         </a>
 
-        <a href="/songs" class="nav-button">
+        <a href="journal" class="nav-button">
             <i class="bi bi-search" aria-hidden="true"></i>
-            <span>Browse Songs</span>
-        </a>
-
-        <a href="/albums" class="nav-button">
-            <i class="bi bi-search" aria-hidden="true"></i>
-            <span>Browse Albums</span>
+            <span> My Journal</span>
         </a>
     </nav>
-
     <?php
     require_once BASE_PATH . '/app/includes/auth.php';
     if (isLoggedIn()): ?>
@@ -27,4 +24,6 @@
             <a href="logout" class="logout-link">Logout</a>
         </div>
     <?php endif; ?>
+        
+
 </header>
