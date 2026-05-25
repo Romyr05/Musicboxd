@@ -1,6 +1,6 @@
 <?php
 
-// This is where the logic part of the Profile
+// This is where the logic part of the Journal
 
 require_once BASE_PATH . '/app/includes/auth.php';
 require_once BASE_PATH . '/app/models/Journal.php';

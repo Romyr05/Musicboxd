@@ -16,7 +16,7 @@
     <div class="journal-controls">
         <input type="text" class="journal-search" placeholder="Search Reviews" hidden>
         
-        <form method="GET" enctype="multipart/form-data" class="journal-filters">
+        <form method="GET" class="journal-filters">
             <div class="filter-group">
                 <label class="filter-label">Review Type</label>
                 <select class="filter-select" name="journal-type" onchange="this.form.submit()">
@@ -47,10 +47,10 @@
                     <?php endforeach;?>
                 </select>
             </div>
-            <!-- change as you will, pero wala ko may makita reason to add more options -->
-            <!-- <div class="filter-group">
-                <-- FEET get all available artists  
-                <-- helper to preserve button state 
+            <!-- change as you will, pero wala ko may makita reason to add more options
+            <div class="filter-group">
+                FEET get all available artists  
+                helper to preserve button state 
                 <input type="hidden" name="extra_filters" value="<?php// echo $extra_state?>"> 
 
                 <label class="filter-label">Extra Options</label>
