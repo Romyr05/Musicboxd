@@ -11,20 +11,20 @@ INSERT IGNORE INTO artists (id, name, genre) VALUES
     (8, 'fitterkarma', 'Indie');
 
 INSERT IGNORE INTO albums (id, title, year_released, album_cover_url, genre) VALUES
-    (1, 'Khangkhungkherrnitz', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02556f267a3547979e820c4144', 'OPM Rock'),
-    (2, 'Gulong Itlog Gulong', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0287b7413135165919334c4577', 'OPM Rock'),
-    (3, 'Halina Sa Parokya', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024d92c86cccc6a8f604defbd6', 'OPM Rock'),
-    (4, 'Kung Alam Mo Lang', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027300c1e7edcdbd15a42e1579', 'Pinoy Hip-Hop'),
-    (5, 'DAMN.', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b52c6b9bc4e43d873869699', 'Hip-Hop'),
-    (6, 'To Pimp A Butterfly', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cdb645498cd3d8a2db4d05e1', 'Hip-Hop'),
-    (7, 'Un Verano Sin Ti', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0249d694203245f241a1bcaa72', 'Reggaeton'),
-    (8, 'SOUR', NULL, 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a91c10fe9472d9bd89802e5a', 'Pop Rock'),
-    (9, 'Messy', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cac9b52107643faf13a7587b', 'R&B/Soul'),
-    (10, 'Pa-Umaga', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0207e1909db1c5b06b78cb6dc3', 'Pinoy Hip-Hop'),
-    (11, 'Pahinga', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c57713156d3bc9ce81c6f819', 'Pinoy Hip-Hop'),
-    (12, 'Kalapastangan', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028c1a5cb63a8f4f9c16a127c3', 'Indie'),
-    (13, 'Pag-Ibig ay Kanibalismo II', NULL, 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02796442914fd83d47da3242a9', 'Indie'),
-    (14, 'Man I Need', NULL, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e3d69e17dde129037a1f09e2', 'R&B/Soul');
+    (1, 'Khangkhungkherrnitz', 1996, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02556f267a3547979e820c4144', 'OPM Rock'),
+    (2, 'Gulong Itlog Gulong', 1999, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0287b7413135165919334c4577', 'OPM Rock'),
+    (3, 'Halina Sa Parokya', 2005, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024d92c86cccc6a8f604defbd6', 'OPM Rock'),
+    (4, 'Kung Alam Mo Lang', 2023, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027300c1e7edcdbd15a42e1579', 'Pinoy Hip-Hop'),
+    (5, 'DAMN.', 2017, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b52c6b9bc4e43d873869699', 'Hip-Hop'),
+    (6, 'To Pimp A Butterfly', 2015, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cdb645498cd3d8a2db4d05e1', 'Hip-Hop'),
+    (7, 'Un Verano Sin Ti', 2022, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0249d694203245f241a1bcaa72', 'Reggaeton'),
+    (8, 'SOUR', 2021, 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a91c10fe9472d9bd89802e5a', 'Pop Rock'),
+    (9, 'Messy', 2023, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cac9b52107643faf13a7587b', 'R&B/Soul'),
+    (10, 'Pa-Umaga', 2018, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0207e1909db1c5b06b78cb6dc3', 'Pinoy Hip-Hop'),
+    (11, 'Pahinga', 2017, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c57713156d3bc9ce81c6f819', 'Pinoy Hip-Hop'),
+    (12, 'Kalapastangan', 2023, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028c1a5cb63a8f4f9c16a127c3', 'Indie'),
+    (13, 'Pag-Ibig ay Kanibalismo II', 2025, 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02796442914fd83d47da3242a9', 'Indie'),
+    (14, 'Man I Need', 2025, 'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e3d69e17dde129037a1f09e2', 'R&B/Soul');
 
 INSERT IGNORE INTO album_artists (album_id, artist_id) VALUES
     (1, 1),
