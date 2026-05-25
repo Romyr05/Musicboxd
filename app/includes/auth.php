@@ -21,7 +21,7 @@ function isLoggedIn(): bool{
     return isset($_SESSION['user_id']);
 }
 
-function userExist(string $username, $email): bool{
+function userExist(string $username, string $email): bool{
     $stmt = db()->prepare(
         'SELECT id FROM users WHERE username = ? OR email = ? LIMIT 1'
     );
