@@ -1,14 +1,10 @@
-<?php
-// For HTML purposes only
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="assets/css/login_style.css">
+    <link rel="stylesheet" href="/assets/css/login_style.css">
 </head>
 <body class="login-page">
     <main class="login-shell">
@@ -43,7 +39,7 @@
 
                     <button type="submit">Sign In</button>
 
-                    <a href="register" class="register-link">Register Account</a>
+                    <a href="register" class="forgot-link">Register Account</a>
                 </form>
             </div>
         </section>
