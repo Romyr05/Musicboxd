@@ -1,5 +1,10 @@
 <?php
-# helper file only
+// Register a user
+// Login a user
+// Check if already logged in
+// get current user
+// protect pages
+
 
 
 //using php session
@@ -14,6 +19,16 @@ require_once __DIR__ . '/../config/database.php';
 
 function isLoggedIn(): bool{
     return isset($_SESSION['user_id']);
+}
+
+function userExist(string $username, string $email): bool{
+    $stmt = db()->prepare(
+        'SELECT id FROM users WHERE username = ? OR email = ? LIMIT 1'
+    );
+
+    $stmt->execute([$username, $email]);
+
+    return (bool) $stmt->fetch();  //fetch returns obj must be bool
 }
 
  
