@@ -49,7 +49,7 @@ function currentUsername(): ?string
 function requireLogin(): void
 {
     if (!isLoggedIn()) {
-        header('Location: /login');
+        header('Location: login');
         exit;
     }
 }
