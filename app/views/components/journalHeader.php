@@ -1,6 +1,6 @@
 
 <header class="site-header">
-    <a href="/" class="brand">Musicboxd</a>
+    <a href="./" class="brand">Musicboxd</a>
 
     <nav class="header-nav">
         <a href="/users" class="nav-button">
