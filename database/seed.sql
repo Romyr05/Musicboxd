@@ -42,27 +42,27 @@ INSERT IGNORE INTO album_artists (album_id, artist_id) VALUES
     (13, 8),
     (14, 6);
 
-INSERT IGNORE INTO songs (id, album_id, title, genre) VALUES
-    (1, 1, 'Buloy', 'OPM Rock'),
-    (2, 2, 'Halaga', 'OPM Rock'),
-    (3, 3, 'The Ordertaker', 'OPM Rock'),
-    (4, 4, 'Walang Alam', 'Pinoy Hip-Hop'),
-    (5, 4, 'Alam Mo Ba Girl', 'Pinoy Hip-Hop'),
-    (6, 4, 'Sumugal', 'Pinoy Hip-Hop'),
-    (7, 5, 'HUMBLE.', 'Hip-Hop'),
-    (8, 5, 'DNA.', 'Hip-Hop'),
-    (9, 6, 'Alright', 'Hip-Hop'),
-    (10, 7, 'Tití Me Preguntó', 'Reggaeton'),
-    (11, 7, 'Moscow Mule', 'Reggaeton'),
-    (12, 7, 'Después de la Playa', 'Reggaeton'),
-    (13, 8, 'drivers license', 'Pop Rock'),
-    (14, 8, 'good 4 u', 'Pop Rock'),
-    (15, 9, 'Dive', 'R&B/Soul'),
-    (16, 10, 'Pa-Umaga', 'Pinoy Hip-Hop'),
-    (17, 11, 'Pahinga', 'Pinoy Hip-Hop'),
-    (18, 12, 'Kalapastangan', 'Indie'),
-    (19, 13, 'Pag-Ibig ay Kanibalismo II', 'Indie'),
-    (20, 14, 'Man I Need', 'R&B/Soul');
+INSERT IGNORE INTO songs (id, album_id, title, year_released, genre) VALUES
+    (1, 1, 'Buloy', 1997, 'OPM Rock'),
+    (2, 2, 'Halaga', 1999, 'OPM Rock'),
+    (3, 3, 'The Ordertaker', 2005, 'OPM Rock'),
+    (4, 4, 'Walang Alam', 2004, 'Pinoy Hip-Hop'),
+    (5, 4, 'Alam Mo Ba Girl', 2005, 'Pinoy Hip-Hop'),
+    (6, 4, 'Sumugal', 2006, 'Pinoy Hip-Hop'),
+    (7, 5, 'HUMBLE.', 2017, 'Hip-Hop'),
+    (8, 5, 'DNA.', 2017, 'Hip-Hop'),
+    (9, 6, 'Alright', 2015, 'Hip-Hop'),
+    (10, 7, 'Tití Me Preguntó', 2022, 'Reggaeton'),
+    (11, 7, 'Moscow Mule', 2022, 'Reggaeton'),
+    (12, 7, 'Después de la Playa', 2022, 'Reggaeton'),
+    (13, 8, 'drivers license', 2021, 'Pop Rock'),
+    (14, 8, 'good 4 u', 2021, 'Pop Rock'),
+    (15, 9, 'Dive', 2017, 'R&B/Soul'),
+    (16, 10, 'Pa-Umaga', 2020, 'Pinoy Hip-Hop'),
+    (17, 11, 'Pahinga', 2021, 'Pinoy Hip-Hop'),
+    (18, 12, 'Kalapastangan', 2020, 'Indie'),
+    (19, 13, 'Pag-Ibig ay Kanibalismo II', 2024, 'Indie'),
+    (20, 14, 'Man I Need', 2021, 'R&B/Soul');
 
 INSERT IGNORE INTO song_artists (song_id, artist_id) VALUES
     (1, 1),
