@@ -1,0 +1,26 @@
+.holder{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.card{
+    border: 2px solid black;
+    padding: 25px;
+}
+.center{
+    text-align: center;
+}
+.musicinfo{
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.section{
+    margin:auto;
+}
+.sidestats{
+    text-align: center;
+    padding: 15px;
+}
