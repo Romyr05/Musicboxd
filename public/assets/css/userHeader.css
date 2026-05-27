@@ -8,7 +8,6 @@ body {
     padding: 0;
 }
 
-
 .site-header {
     height: 58px;
     padding: 0 32px;
@@ -67,6 +66,15 @@ body {
     font-weight: 600;
     color: #777;
     white-space: nowrap;
+}
+
+.user-actions a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-actions a:hover .username {
+    color: #555;
 }
 
 .logout-link {

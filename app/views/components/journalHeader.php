@@ -1,6 +1,6 @@
 
 <header class="site-header">
-    <a href="/" class="brand">Musicboxd</a>
+    <a href="./" class="brand">Musicboxd</a>
 
     <nav class="header-nav">
         <a href="/users" class="nav-button">
@@ -23,7 +23,9 @@
     require_once BASE_PATH . '/app/includes/auth.php';
     if (isLoggedIn()): ?>
         <div class="user-actions">
-            <span class="username"><?= htmlspecialchars(currentUsername()) ?></span>
+            <a href="profile">
+                <span class="username"><?= htmlspecialchars(currentUsername()) ?></span>
+            </a>
             <a href="logout" class="logout-link">Logout</a>
         </div>
     <?php endif; ?>

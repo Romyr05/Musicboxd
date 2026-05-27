@@ -20,11 +20,13 @@ $path = '/' . trim($path, '/');
 //Controllers
 require BASE_PATH . '/app/controllers/AuthController.php';
 require BASE_PATH . '/app/controllers/ProfileController.php';
+require BASE_PATH . '/app/controllers/JournalController.php';
 require BASE_PATH . '/app/controllers/LandingController.php';
 
 
 $authController = new AuthController();
 $profileController = new ProfileController();
+$journalController = new JournalController();
 $landingController = new LandingController();
 
 #routes
@@ -44,6 +46,12 @@ switch ($path) {
 
         $profileController->show();
 
+        break;
+
+    case '/journal':
+
+        $journalController->show();
+        
         break;
 
     case '/login':
