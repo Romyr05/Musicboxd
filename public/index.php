@@ -12,9 +12,9 @@ $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
 check if pages is not in root folder, if not get the file path only without its parent
 
 */
-if ($scriptDir !== '/' && str_starts_with($path, $scriptDir)) { 
-    $path = substr($path, strlen($scriptDir));   
-} 
+if ($scriptDir !== '/' && str_starts_with($path, $scriptDir)) {
+    $path = substr($path, strlen($scriptDir));
+}
 
 $path = '/' . trim($path, '/');
 
@@ -24,30 +24,33 @@ require BASE_PATH . '/app/controllers/ProfileController.php';
 require BASE_PATH . '/app/controllers/JournalController.php';
 require BASE_PATH . '/app/controllers/SongController.php';
 require BASE_PATH . '/app/controllers/ReviewController.php';
+require BASE_PATH . '/app/controllers/LandingController.php';
+
 
 $authController = new AuthController();
 $profileController = new ProfileController();
 $journalController = new JournalController();
 $songController = new SongController();
 $reviewController = new ReviewController();
+$landingController = new LandingController();
 
 #routes
 switch ($path) {
     case '/':
     case '/index':
-        if(!isLoggedIn()){
+        if (!isLoggedIn()) {
             header('Location: login');
             exit;
         }
 
 
-        require BASE_PATH . '/app/views/landing.php';
+        $landingController->show();
         break;
 
     case '/profile':
 
         $profileController->show();
-        
+
         break;
 
     case '/journal':
