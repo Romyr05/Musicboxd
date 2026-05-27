@@ -16,11 +16,15 @@ class Journal {
     }
 
     // extra filters
-    public function getReviewDates(): ?array{
+    public function getReviewDates(): array{
         $stmt = db()->prepare(
 
             " SELECT DISTINCT year_released 
             FROM albums
+            WHERE year_released IS NOT NULL
+            UNION
+            SELECT DISTINCT year_released
+            FROM songs
             WHERE year_released IS NOT NULL
             ORDER BY year_released DESC
             " 
@@ -48,7 +52,7 @@ class Journal {
         $yearFilter = " ";
         
         /* if the year is valid and not "any" we insert the year 
-        between arr[0] and arr[1] and append another at the end */
+        for both album and song queries */
         if($year !== "any"){
             $yearFilter = "AND albums.year_released = ?";
             array_splice($params,1,0,[$year]);
@@ -58,7 +62,8 @@ class Journal {
         $stmt = db()->prepare(
 
             " SELECT 'Album' AS item_type,
-            artists.name AS artist_name,
+            GROUP_CONCAT(artists.name, ', ') AS artist_name,
+            album_reviews.id as review_id,
             album_reviews.rating,
             album_reviews.review_text,
             album_reviews.created_at,
@@ -70,11 +75,13 @@ class Journal {
             JOIN album_artists ON albums.id = album_artists.album_id
             JOIN artists ON album_artists.artist_id = artists.id
             WHERE album_reviews.user_id = ? " . $yearFilter . "
+            GROUP BY album_reviews.id
 
             UNION ALL
 
             SELECT 'Song' AS item_type,
-            artists.name AS artist_name,
+            GROUP_CONCAT(artists.name, ', ') AS artist_name,
+            song_reviews.id as review_id,
             song_reviews.rating,
             song_reviews.review_text,
             song_reviews.created_at,
@@ -86,7 +93,8 @@ class Journal {
             JOIN song_artists ON songs.id = song_artists.song_id
             JOIN artists ON song_artists.artist_id = artists.id
             LEFT JOIN albums ON songs.album_id = albums.id
-            WHERE song_reviews.user_id = ? " . $yearFilter . "
+            WHERE song_reviews.user_id = ? AND COALESCE(songs.year_released, albums.year_released) " . (($year !== "any") ? "= ?" : "IS NOT NULL") . "
+            GROUP BY song_reviews.id
 
             " . $sortprompt
         );
@@ -119,7 +127,7 @@ class Journal {
         $stmt = db()->prepare(
 
             " SELECT 'Album' AS item_type,
-            artists.name AS artist_name,
+            GROUP_CONCAT(artists.name, ', ') AS artist_name,
             album_reviews.rating,
             album_reviews.review_text,
             album_reviews.created_at,
@@ -131,7 +139,9 @@ class Journal {
             JOIN album_artists ON albums.id = album_artists.album_id
             JOIN artists ON album_artists.artist_id = artists.id
             WHERE album_reviews.user_id = ?
-            " . $yearprompt . " " . $sortprompt
+            " . $yearprompt . "
+            GROUP BY album_reviews.id
+            " . $sortprompt
         );
 
         $stmt->execute($params);
@@ -155,14 +165,14 @@ class Journal {
         $params = [$userID];
         $yearprompt = "";
         if($year !== "any"){
-            $yearprompt = "AND albums.year_released = ?";
+            $yearprompt = "AND COALESCE(songs.year_released, albums.year_released) = ?";
             $params[] = $year;
         }
 
         $stmt = db()->prepare(
 
             " SELECT 'Song' AS item_type,
-            artists.name AS artist_name,
+            GROUP_CONCAT(artists.name, ', ') AS artist_name,
             song_reviews.rating,
             song_reviews.review_text,
             song_reviews.created_at,
@@ -175,7 +185,9 @@ class Journal {
             JOIN artists ON song_artists.artist_id = artists.id
             LEFT JOIN albums ON songs.album_id = albums.id
             WHERE song_reviews.user_id = ?
-            " . $yearprompt . " " . $sortprompt
+            " . $yearprompt . "
+            GROUP BY song_reviews.id
+            " . $sortprompt
         );
 
         $stmt->execute($params);
