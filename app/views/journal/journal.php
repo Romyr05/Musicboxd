@@ -93,7 +93,11 @@
                         <p class="review-text"><?= htmlspecialchars($review['review_text']) ?></p>
                         <div class="review-footer">
                             <span class="review-likes">♡  <?= htmlspecialchars($review['likes']) ?> people liked your review</span>
-                            <button class="edit-review-btn" hidden>Edit Review</button>
+                            <?php if(!empty($review['review_id']) && isLoggedIn()): ?>
+                                <a href="<?= url('/review/edit?id=' . urlencode($review['review_id']) . '&type=' . strtolower($review['item_type'])) ?>" class="edit-review-btn">Edit Review</a>
+                            <?php else: ?>
+                                <button class="edit-review-btn" hidden>Edit Review</button>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

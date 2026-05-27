@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
     <title>Review</title>
-    <link rel="stylesheet" href="assets/css/userHeader.css">
-    <link rel="stylesheet" href="/public/assets/css/review_styling.css">
+    <link rel="stylesheet" href="<?= url('/assets/css/userHeader.css') ?>">
+    <link rel="stylesheet" href="<?= url('/assets/css/review_styling.css') ?>">
 </head>
 <body>
 <?php require BASE_PATH . '/app/views/components/journalHeader.php'; ?>
 
-    <main class="review-page">
+    <div class="review-page-body">
+    <main class="review-page<?php echo (!empty($isEdit) ? ' edit-mode' : '') ?>">
         
         <header class="review-header">
             <h2><?= $isEdit ? 'Edit Review' : 'Add a Review' ?></h2>
         </header>
 
-        <form action="<?= $isEdit? '/review?action=update' : '/review?action=store' ?>" method="POST">
+        <form class="review-form" action="<?= $isEdit ? url('/review/update') : url('/review/store') ?>" method="POST">
             
             <?php if($isEdit): ?>
                 <input type="hidden" name="review_id" value="<?= htmlspecialchars($review['id'] ?? '') ?>">
@@ -27,8 +28,19 @@
 
             <div class="form-left">
                 <div class="form-cover">
-                    <?php if(!empty($item['album_cover_url']) || !empty($review['album_cover_url'])): ?>
-                        <img src="<?= htmlspecialchars($item['album_cover_url'] ?? $review['album_cover_url']) ?>" alt="Cover Artwork">
+                    <?php
+                        $cover = $item['album_cover_url'] ?? $review['album_cover_url'] ?? '';
+                        $coverUrl = '';
+                        if (!empty($cover)) {
+                            if (preg_match('#^(https?:)?//#i', $cover) || strpos($cover, '/') === 0) {
+                                $coverUrl = $cover;
+                            } else {
+                                $coverUrl = url('/' . ltrim($cover, '/'));
+                            }
+                        }
+                    ?>
+                    <?php if(!empty($coverUrl)): ?>
+                        <img src="<?= htmlspecialchars($coverUrl) ?>" alt="Cover Artwork">
                     <?php else: ?>
                         <div class="fallback-icon">🎵</div>
                     <?php endif; ?>
@@ -82,7 +94,7 @@
 
                 <footer class="form-actions">
                     <div class="right-buttons">
-                        <a href="/journal" class="cancelLinkBtn" onclick="return confirm('Are you sure you want to discard your changes?');">Cancel</a>
+                        <a href="<?= url('/journal') ?>" class="cancelLinkBtn" onclick="return confirm('Are you sure you want to discard your changes?');">Cancel</a>
                         
                         <?php if ($isEdit): ?>
                             <button type="submit" class="deleteBtn" onclick="if(confirm('Are you sure you want to delete this review?')) { document.getElementById('form-action-type').value = 'delete'; } else { return false; }">Delete</button>
@@ -95,6 +107,7 @@
             </div>
         </form>
     </main>
+    </div>
 
 </body>
 </html>

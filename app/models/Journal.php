@@ -128,6 +128,7 @@ class Journal {
 
             " SELECT 'Album' AS item_type,
             GROUP_CONCAT(artists.name, ', ') AS artist_name,
+            album_reviews.id as review_id,
             album_reviews.rating,
             album_reviews.review_text,
             album_reviews.created_at,
@@ -173,6 +174,7 @@ class Journal {
 
             " SELECT 'Song' AS item_type,
             GROUP_CONCAT(artists.name, ', ') AS artist_name,
+            song_reviews.id as review_id,
             song_reviews.rating,
             song_reviews.review_text,
             song_reviews.created_at,

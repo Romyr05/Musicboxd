@@ -82,7 +82,7 @@ class Review {
 
         $stmt->execute([$userID, $reviewID]);
 
-        $song_review = $stmt->fetch();
+        $song_review = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $song_review ?: null;
     }
@@ -113,7 +113,7 @@ class Review {
         );
         $stmt->execute([$userID, $reviewID]);
 
-        $album_review = $stmt->fetch();
+        $album_review = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $album_review ?: null;
     }

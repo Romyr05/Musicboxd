@@ -2,6 +2,7 @@
 
 define('BASE_PATH', dirname(__DIR__));   #base path for all
 
+require BASE_PATH . '/app/includes/helpers.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);  #url
 $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
@@ -21,12 +22,16 @@ $path = '/' . trim($path, '/');
 require BASE_PATH . '/app/controllers/AuthController.php';
 require BASE_PATH . '/app/controllers/ProfileController.php';
 require BASE_PATH . '/app/controllers/JournalController.php';
+require BASE_PATH . '/app/controllers/SongController.php';
+require BASE_PATH . '/app/controllers/ReviewController.php';
 require BASE_PATH . '/app/controllers/LandingController.php';
 
 
 $authController = new AuthController();
 $profileController = new ProfileController();
 $journalController = new JournalController();
+$songController = new SongController();
+$reviewController = new ReviewController();
 $landingController = new LandingController();
 
 #routes
@@ -54,6 +59,12 @@ switch ($path) {
         
         break;
 
+    case '/songs':
+
+        $songController->show();
+        
+        break;
+
     case '/login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $authController->login();
@@ -73,6 +84,26 @@ switch ($path) {
 
     case '/logout';
         $authController->logout();
+        break;
+
+    case '/review':
+        $reviewController->create();
+        break;
+
+    case '/review/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $reviewController->store();
+        }
+        break;
+
+    case '/review/edit':
+        $reviewController->edit();
+        break;
+
+    case '/review/update':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $reviewController->update();
+        }
         break;
 
     default:
