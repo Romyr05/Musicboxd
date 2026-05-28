@@ -1,12 +1,14 @@
-<?php 
+<?php
 
 require_once BASE_PATH . '/app/config/database.php';
 
 
-class Profile {
+class Profile
+{
 
     # this gets the user information (id,username,email and created_at)
-    public function getUserInfo($userID) : ?object{
+    public function getUserInfo($userID): ?object
+    {
         $stmt = db()->prepare(
 
             "SELECT id,username,email, created_at
@@ -15,7 +17,7 @@ class Profile {
             LIMIT 1
             "
         );
-        
+
         $stmt->execute([$userID]);
 
         $user_info = $stmt->fetch();
@@ -24,7 +26,8 @@ class Profile {
     }
 
 
-    public function countUserSongReviews($userID): int{
+    public function countUserSongReviews($userID): int
+    {
         $stmt = db()->prepare(
 
             "SELECT COUNT(*) 
@@ -40,7 +43,8 @@ class Profile {
         return (int) $count_users_songs;
     }
 
-    public function countUserAlbumReviews($userID): int{
+    public function countUserAlbumReviews($userID): int
+    {
         $stmt = db()->prepare(
 
             "SELECT COUNT(*) 
@@ -58,10 +62,11 @@ class Profile {
 
 
 
-    public function getHighestRatedSongs($userID): array{
+    public function getHighestRatedSongs($userID, $limit): array
+    {
         $stmt = db()->prepare(
 
-        # renamed since PDO uses the .name and .title if used as literal name and title
+            # renamed since PDO uses the .name and .title if used as literal name and title
             "SELECT songs.title AS song_title, 
             artists.name AS artist_name, 
             song_reviews.rating,
@@ -78,14 +83,14 @@ class Profile {
             WHERE song_reviews.user_id = ?
             ORDER BY song_reviews.rating DESC, song_reviews.created_at DESC  -- if same then by created
             
-            LIMIT 2
+            LIMIT ?
 
             "
 
 
         );
 
-        $stmt->execute([$userID]);
+        $stmt->execute([$userID, $limit]);
 
         $highestRatedSongs = $stmt->fetchAll();
 
@@ -95,7 +100,8 @@ class Profile {
     }
 
 
-    public function getHighestRatedAlbums($userID): array{
+    public function getHighestRatedAlbums($userID, $limit): array
+    {
         $stmt = db()->prepare(
 
             " SELECT albums.title AS album_title,
@@ -114,12 +120,12 @@ class Profile {
             WHERE album_reviews.user_id = ?
             ORDER BY album_reviews.rating DESC, album_reviews.created_at DESC
 
-            LIMIT 2
+            LIMIT ?
 
             "
         );
 
-        $stmt->execute([$userID]);
+        $stmt->execute([$userID, $limit]);
 
         $highestRatedAlbums = $stmt->fetchAll();
 
@@ -129,7 +135,8 @@ class Profile {
     }
 
 
-    public function getRecentSongReviews($userID) : array{
+    public function getRecentSongReviews($userID, $limit): array
+    {
         $stmt = db()->prepare(
             "SELECT
                 songs.title AS song_title,
@@ -147,10 +154,10 @@ class Profile {
             WHERE song_reviews.user_id = ?
             ORDER BY song_reviews.created_at DESC
 
-            LIMIT 2"
+            LIMIT ?"
         );
 
-        $stmt->execute([$userID]);
+        $stmt->execute([$userID, $limit]);
 
         $RecentlyRatedSongs = $stmt->fetchAll();
 
@@ -159,10 +166,11 @@ class Profile {
     }
 
 
-    public function getRecentAlbumReviews($userID): array{
+    public function getRecentAlbumReviews($userID, $limit): array
+    {
 
-            $stmt = db()->prepare(
-                "SELECT
+        $stmt = db()->prepare(
+            "SELECT
                     albums.title AS album_title,
                     artists.name AS artist_name,
                     album_reviews.rating,
@@ -179,10 +187,10 @@ class Profile {
                 WHERE album_reviews.user_id = ?
                 ORDER BY album_reviews.created_at DESC
 
-                LIMIT 2"
+                LIMIT ?"
         );
 
-        $stmt->execute([$userID]);
+        $stmt->execute([$userID, $limit]);
 
         $RecentlyRatedAlbums = $stmt->fetchAll();
 

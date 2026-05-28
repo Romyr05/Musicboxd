@@ -1,0 +1,210 @@
+.albums-page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 48px 80px;
+}
+
+.albums-title {
+    font-size: 44px;
+    font-weight: 700;
+    margin: 0 0 32px;
+    text-align: center;
+}
+
+.albums-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.albums-search {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.albums-search::placeholder {
+    color: #999;
+}
+
+.albums-filters {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.filter-select {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.album-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.album-image {
+    flex: 0 0 120px;
+    height: 120px;
+    background: #e0e0e0;
+    border-radius: 6px;
+}
+
+.album-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.album-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.album-type {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+}
+
+.album-rating {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.album-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+}
+
+.album-artist {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    margin: 0;
+}
+
+.album-album {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+    font-style: italic;
+}
+
+.album-date {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+}
+
+.album-text {
+    font-size: 14px;
+    color: #333;
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.album-year {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+    font-weight: 500;
+}
+
+.album-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.review-album-btn {
+    height: 32px;
+    padding: 0 16px;
+    background: #252525;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.review-album-btn:hover {
+    background: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+    .albums-page {
+        padding: 20px 24px 60px;
+    }
+
+    .albums-title {
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
+
+    .albums-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .albums-filters {
+        flex-direction: column;
+    }
+
+    .filter-select {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .album-card {
+        flex-direction: column;
+    }
+
+    .album-image {
+        flex: 0 0 150px;
+        height: 150px;
+    }
+}
