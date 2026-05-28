@@ -23,6 +23,7 @@ require BASE_PATH . '/app/controllers/AuthController.php';
 require BASE_PATH . '/app/controllers/ProfileController.php';
 require BASE_PATH . '/app/controllers/JournalController.php';
 require BASE_PATH . '/app/controllers/SongController.php';
+require BASE_PATH . '/app/controllers/AlbumController.php';
 require BASE_PATH . '/app/controllers/ReviewController.php';
 require BASE_PATH . '/app/controllers/LandingController.php';
 
@@ -31,6 +32,7 @@ $authController = new AuthController();
 $profileController = new ProfileController();
 $journalController = new JournalController();
 $songController = new SongController();
+$albumController = new AlbumController();
 $reviewController = new ReviewController();
 $landingController = new LandingController();
 
@@ -64,7 +66,10 @@ switch ($path) {
         $songController->show();
         
         break;
+    case '/albums':
+        $albumController->show();
 
+        break;
     case '/login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $authController->login();
